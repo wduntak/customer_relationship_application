@@ -20,7 +20,10 @@ class Rolodex
 	def display_one(name)
 		show = @contacts[find_name(name)]
 		if show
-			puts "#{show.first_name} #{show.last_name} - <#{show.email}> Note: #{show.note}"
+			puts "#{show.first_name} #{show.last_name}:" 
+			puts "E-mail: <#{show.email}>"
+			puts "ID: #{show.id}"
+			puts "Note: #{show.note}"
 		else
 			puts "Unable to find contact"
 		end

@@ -48,13 +48,14 @@ class CRM
 	end
 
 	def print_main_menu
-		puts " [1] Add a contact \n [2] Modify a contact \n [3] Display all contacts \n [4] Display one contact \n [5] Display an attribute \n [6] Delete an account \n [7] Exit \n Enter a number:"
+		puts " [1] Add a contact \n [2] Modify a contact \n [3] Display all contacts \n [4] Display one contact \n [5] Display an attribute \n [6] Delete an account \n [7] Exit \n \n Enter a number:"
 	end
 
 	def main_menu
 		puts "Welcome to #{@name}"
 
 		while true
+			puts " "
 			print_main_menu
 			input = gets.chomp.to_i
 			return if input == 7
@@ -93,6 +94,10 @@ class CRM
 		contact = Contact.new(first_name, last_name, email, note)
 
 		@rolodex.add_contact(contact)
+
+		puts " "
+
+		puts "Entry has been added to the rolodex!"
 	end
 
 	def display_all_contacts
