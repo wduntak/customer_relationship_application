@@ -17,6 +17,15 @@ class Rolodex
 		@contacts.rindex {|contact| (contact.first_name == name[0]) && (contact.last_name == name[1])}
 	end
 
+	def display_one(name)
+		show = @contacts[find_name(name)]
+		if show
+			puts "#{show.first_name} #{show.last_name} - <#{show.email}> Note: #{show.note}"
+		else
+			puts "Unable to find contact"
+		end
+	end
+
 	def modify_contact(name, attribute, value)
 		case attribute
 		when 1 then @contacts[find_name(name)].first_name = value

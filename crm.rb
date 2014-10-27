@@ -109,8 +109,7 @@ class CRM
 	def display_one_contact
 		print "Enter the first and last name that you would like to display: "
 		name = gets.chomp.split
-		puts @rolodex.find_name(name)
-		
+		@rolodex.display_one(name)
 	end
 
 	def print_modify_menu
