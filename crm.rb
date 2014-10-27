@@ -125,8 +125,8 @@ class CRM
 		puts "[2] Note"
 		puts "[3] ID"
 		puts "[4] Quit"
-		attribute = gets.chomp.to_i
-		@rolodex.display_attribute(name, attribute)
+		selection = gets.chomp.to_i
+		@rolodex.display_attribute(name, selection)
 	end
 
 	def print_modify_menu
@@ -146,10 +146,10 @@ class CRM
 			puts "[4] Note"
 			puts "[5] ID" 
 			print "Enter a contact attribute to be modified: "
-			attribute = gets.chomp.to_i
+			selection = gets.chomp.to_i
 			print "Enter modification: "
 			value = gets.chomp
-			@rolodex.modify_contact(name, attribute, value)
+			@rolodex.modify_contact(name, selection, value)
 		else
 			puts "Returning to Menu..."
 		end

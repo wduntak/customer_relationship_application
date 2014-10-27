@@ -29,9 +29,9 @@ class Rolodex
 		end
 	end
 
-	def display_attribute(name, attribute)
+	def display_attribute(name, selection)
 		show = @contacts[find_name(name)]
-		case attribute
+		case selection
 		when 1 then puts "#{show.first_name} #{show.last_name}: <#{show.email}>"
 		when 2 then puts "#{show.first_name} #{show.last_name}: #{show.note}"
 		when 3 then puts "#{show.first_name} #{show.last_name}: #{show.id}"
@@ -41,13 +41,15 @@ class Rolodex
 		end
 	end
 
-	def modify_contact(name, attribute, value)
-		case attribute
+	def modify_contact(name, selection, value)
+		case selection
 		when 1 then @contacts[find_name(name)].first_name = value
 		when 2 then @contacts[find_name(name)].last_name = value
 		when 3 then @contacts[find_name(name)].email = value
 		when 4 then @contacts[find_name(name)].note = value
 		when 5 then @contacts[find_name(name)].id = value
+		else
+			puts "Invalid entry"
 		end
 	end
 
