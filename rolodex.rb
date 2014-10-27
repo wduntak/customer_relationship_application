@@ -13,4 +13,22 @@ class Rolodex
 		@contacts << contact
 	end
 
+	def find_name(name)
+		@contacts.rindex {|contact| (contact.first_name == name[0]) && (contact.last_name == name[1])}
+	end
+
+	def modify_contact(name, attribute, value)
+		case attribute
+		when 1 then @contacts[find_name(name)].first_name = value
+		when 2 then @contacts[find_name(name)].last_name = value
+		when 3 then @contacts[find_name(name)].email = value
+		when 4 then @contacts[find_name(name)].note = value
+		when 5 then @contacts[find_name(name)].id = value
+		end
+	end
+
+	def delete_contact(name)
+		@contacts.delete_at(find_name(name))
+	end
+
 end

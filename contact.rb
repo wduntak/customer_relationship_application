@@ -10,3 +10,5 @@ class Contact
 	end
 
 end
+
+

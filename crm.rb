@@ -96,65 +96,57 @@ class CRM
 	end
 
 	def display_all_contacts
+		puts "Printing Rolodex..."
+		puts " "
 		@rolodex.contacts.each do |contact|
-			puts "#{contact.first_name} #{contact.last_name} <#{contact.email}> - #{contact.id}"
+			puts "#{contact.first_name} #{contact.last_name} <#{contact.email}> - #{contact.id}\n"
+			puts " "
 		end
 	end
 	
 	puts ""
 
 	def display_one_contact
-		print "Enter your first name: "
-		first_name = gets.chomp 
-		puts "#{@rolodex.contacts.first_name}"
+		print "Enter the first and last name that you would like to display: "
+		name = gets.chomp.split
+		puts @rolodex.find_name(name)
+		
+	end
+
+	def print_modify_menu
+		puts "What would you like to modify?"
+		puts "[1] First Name \n[2] Last Name \n[3] Email\n[4] Note\n[5] Quit"
 	end
 
 	def modify_contact
-		check_user_id
-		puts "What is your ID number?"
-		user_ID = gets.chomp
-	end
-
-
-	def check_user_id
-		puts "Do you have an ID number?"
-		puts "[1] Yes"
-		puts "[2] No"
-
-		choice = gets.chomp.to_i
-
-		if choice == 1
-
-			return
-
-		elsif choice == 2
-
-			puts "What is your last name?"
-			name_input = gets.chomp
-			
-			@rolodex.contacts[last_name].each do |contact|
-
-				if contact == name_input
-
-					puts "#{contact.first_name} #{contact.id}"
-				
-				else
-
-					"#{name_input} was not found!"
-				end
-			end
+		print "Enter the first and last name of the contact you wish to modify: "
+		name = gets.chomp.split 
+		puts "Would you like to modify an attribute of #{name[0]} #{name[1]}? (Enter Yes or No):"
+		confirm_input = gets.chomp.downcase
+		if confirm_input == "yes"
+			puts "[1] First name"
+			puts "[2] Last name"
+			puts "[3] Email"
+			puts "[4] Note"
+			puts "[5] ID" 
+			print "Enter a contact attribute to be modified: "
+			attribute = gets.chomp.to_i
+			print "Enter modification: "
+			value = gets.chomp
+			@rolodex.modify_contact(name, attribute, value)
 		else
-			puts "This is not an option"
+			puts "Returning to Menu..."
 		end
-
-
 	end
 
 
-
+	def delete_contact
+		print "Enter the first and last name you would like to delete from the Rolodex: "
+		name = gets.chomp.split
+		@rolodex.delete_contact(name)
+	end
 
 end
-
 
 crm = CRM.new("Bitmaker Labs CRM")
 crm.main_menu
