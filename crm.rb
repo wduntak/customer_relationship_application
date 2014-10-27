@@ -107,9 +107,21 @@ class CRM
 	puts ""
 
 	def display_one_contact
-		print "Enter the first and last name that you would like to display: "
+		print "Enter the first and last name of the contact that you would like to be displayed: "
 		name = gets.chomp.split
 		@rolodex.display_one(name)
+	end
+
+	def display_attribute
+		puts "Enter the first and last name of contact:"
+		name = gets.chomp.split
+		puts "Which attribute would you like displayed?"
+		puts "[1] E-mail"
+		puts "[2] Note"
+		puts "[3] ID"
+		puts "[4] Quit"
+		attribute = gets.chomp.to_i
+		@rolodex.display_attribute(name, attribute)
 	end
 
 	def print_modify_menu
